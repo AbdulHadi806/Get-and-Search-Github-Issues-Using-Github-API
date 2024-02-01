@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import SearchBarRow from './component/SearchRow/SearchBarRow';
+import IssuesBoxMain from './component/IssueBox/IssuesBoxMain';
+import { useGitHub } from './context/GitHubProvider';
 
 function App() {
+  const { fetchIssues, search } = useGitHub();
+
+  useEffect(() => {
+    fetchIssues(1, search)
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='bg-[#0D1117] h-[100%]'>
+      <div className="sm:container mx-auto px-3 md:px-0 pt-4">
+        <SearchBarRow />
+        <IssuesBoxMain />
+      </div>
     </div>
   );
 }
