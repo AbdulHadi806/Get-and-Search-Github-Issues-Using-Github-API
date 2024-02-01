@@ -15,6 +15,10 @@ This application allows users to retrieve and search GitHub issues using the Git
 3. Install dependencies with `npm install`.
 4. Start the application with `npm start`.
 
+## UI
+<img width="407" alt="image" src="https://github.com/AbdulHadi806/get-and-search-github-issues-using-github-api/assets/113926529/2e867888-ea44-405e-a3ae-f02877e3b713">
+
+
 ## Packages Used
 
 ```json
