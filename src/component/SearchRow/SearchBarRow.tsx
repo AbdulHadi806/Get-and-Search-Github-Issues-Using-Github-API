@@ -40,7 +40,7 @@ function SearchBarRow() {
           )}
         </div>
         <div className='h-full w-full'>
-          <input type="text" className='h-full w-full border-l-0 rounded-r-md border border-slate-700 outline-none focus:outline-none bg-[#010409] text-sm px-4 text-white focus:outline-blue' placeholder='Issues' onKeyDown={handleKeyDown} onChange={(e) => { setSearch(e.target.value) }} value={search} />
+          <input type="text" className='h-full w-full border-l-0 rounded-r-md border border-slate-700 outline-none focus:outline-none bg-[#010409] text-sm px-4 text-[#8B949E] focus:outline-blue' placeholder='Issues' onKeyDown={handleKeyDown} onChange={(e) => { setSearch(e.target.value) }} value={search} />
         </div>
       </div>
       <div className='flex justify-between md:gap-3 h-[30px] w-full md:max-w-[380px]'>
