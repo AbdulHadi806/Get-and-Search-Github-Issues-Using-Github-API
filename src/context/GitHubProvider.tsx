@@ -38,9 +38,7 @@ export const GitHubProvider = ({ children }: GitHubProviderProps) => {
         throw new Error('Failed to fetch data');
       }
       const responseData = await response.json();
-      console.log(responseData)
       const data: Issue[] = responseData.items;
-      console.log(responseData)
       if(responseData.total_count < 1000) {
         setTotalPages(Math.ceil(responseData.total_count / perPage));
       }
