@@ -25,7 +25,7 @@ function IssuesBoxMain() {
     <>
       <div className='rounded-md border border-slate-700 mt-6'>
         <IssuesBoxHeader />
-        {loading ? <div className='h-[100vh] flex justify-center items-center'><BarLoader color="#fff" /></div> : <IssuesRow />}
+        {loading ? <div className='h-[58vh] flex justify-center items-center'><BarLoader color="#fff" /></div> : <IssuesRow />}
       </div>
       <div className='py-8'>
         <ReactPaginate

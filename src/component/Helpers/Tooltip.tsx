@@ -10,7 +10,7 @@ function Tooltip ({ text, children }: TooltipProps) {
 
   return (
     <div 
-      className="relative inline-block"
+      className="relative md:pt-[6px] "
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >

@@ -11,7 +11,7 @@ function App() {
   }, [])
 
   return (
-    <div className='bg-[#0D1117] h-[100%]'>
+    <div className='h-[100%]'>
       <div className="sm:container mx-auto px-3 md:px-0 pt-4">
         <SearchBarRow />
         <IssuesBoxMain />

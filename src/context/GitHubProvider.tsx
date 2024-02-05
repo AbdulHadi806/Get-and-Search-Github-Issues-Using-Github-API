@@ -28,9 +28,6 @@ export const GitHubProvider = ({ children }: GitHubProviderProps) => {
   const perPage = 10;
   const fetchIssues = async (page: number, search: string) => {
     setLoading(true)
-    const headers = {
-      Authorization: `Bearer ${PERSONAL_ACCESS_TOKEN} `
-    }
     try {
       if (prevSearch !== search) {
         setCurrentPage(1)

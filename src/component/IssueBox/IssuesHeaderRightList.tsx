@@ -30,7 +30,7 @@ function IssuesHeaderRightList({ item, isOpen, onToggle }: ColumnBtnProps) {
                 if (!userIssue) return null;
                 const user = userIssue.user;
                 return (
-                  <li key={`${user.id}-${Math.random()}`} className='border-b pl-10 pe-4 flex items-center gap-2 justify-start hover:bg-gray-800 border-slate-700 py-2'>
+                  <li key={`${user.id}-${Math.random()}`} className='border-b pl-6 pe-4 flex items-center gap-2 justify-start hover:bg-gray-800 border-slate-700 py-2'>
                     <button className='flex min-w-[150px] gap-4 items-center'>
                       <div className='w-[30px]'>
                         <img className='object-contain rounded-full' src={user.avatar_url} alt={user.login} />
