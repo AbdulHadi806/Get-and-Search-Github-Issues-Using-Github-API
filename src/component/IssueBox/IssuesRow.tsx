@@ -51,7 +51,7 @@ function IssuesRow() {
                     </div>
                     <div>
                       <div className='flex items-center flex-wrap gap-2'>
-                        <button className='font-semibold leading-[20px] hover:text-blue-500 text-sm md:text-lg break-all'>{item.title}</button>
+                        <button className='font-semibold text-start leading-[20px] hover:text-blue-500 text-sm md:text-lg break-all'>{item.title}</button>
                         <div className='flex gap-2 flex-wrap'>
                           {item.labels.map(label => {
                             return <button key={`${label.id}-${Math.random()}`} className={`border rounded-full text-xs font-semibold px-2 flex items-center justify-center h-[20px]`} style={{
@@ -66,7 +66,7 @@ function IssuesRow() {
                       <span className='text-xs text-slate-500'> Open {calculateTimeDifference(item.created_at)} ago by Eduh75</span>
                     </div>
                   </div>
-                  <div className='pr-3'>
+                  <div className='px-3'>
                     {item.comments > 0 && <button className='flex items-center rounded text-slate-500 hover:text-blue-500 gap-1'><CommentIcon /> {item.comments}</button>}
                   </div>
                 </div>
