@@ -4,7 +4,7 @@ import RightColumnButton from './RightColumnButton'
 import DropDownModel from '../Helpers/DropDownModel'
 import { useGitHub } from '../../context/GitHubProvider';
 import { dropDownDummyText } from './static';
-import { LabelIcon, MileStoneIcon } from './icons';
+import { LabelIcon, MileStoneIcon, SelectedIcon } from './icons';
 
 function SearchBarRow() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -14,17 +14,22 @@ function SearchBarRow() {
     setIsOpen(!isOpen);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter') {
       fetchIssues(currentPage, search);
     }
   };
 
+  const handleButtonClick = (data:string): void => {
+    setSearch(data);
+    fetchIssues(1, search)
+    setIsOpen(false)
+  }
   return (
     <div className='flex flex-col-reverse md:flex-row gap-3 items-center justify-between'>
       <div className='flex items-center w-full md:w-[50%] h-[30px]'>
         <div className='h-full relative'>
-          <button onClick={toggleDropDown} className='text-white hover:bg-gray-800 bg-[#21262D] h-full px-2 rounded-l-md flex text-sm items-center gap-1'>
+          <button onClick={()=>toggleDropDown()} className='text-white hover:bg-gray-800 bg-[#21262D] h-full px-2 rounded-l-md flex text-sm items-center gap-1'>
             Filters <DropDownIcon />
           </button>
           {isOpen && (
@@ -32,8 +37,11 @@ function SearchBarRow() {
               <ul>
                 {dropDownDummyText.map((text, index) => {
                   return <li key={`searchBarDropDown-${Math.random()}-index`}
-                    className={`${index !== dropDownDummyText.length - 1 ? 'border-b' : ''
-                      } hover:bg-gray-800 border-slate-700`}><button className='w-full text-start h-full py-3 px-10'>{text}</button></li>
+                    className={`${index !== dropDownDummyText.length - 1 ? 'border-b' : ''} hover:bg-gray-800 border-slate-700`}>
+                    <button className='w-full text-start h-full py-3 px-10' onClick={() => handleButtonClick(text)}>
+                     <span className='flex gap-2'>{search === text && <SelectedIcon />} {text}</span>
+                    </button>
+                  </li>
                 })}
               </ul>
             </DropDownModel>

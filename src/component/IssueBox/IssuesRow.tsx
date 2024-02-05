@@ -9,22 +9,24 @@ function IssuesRow() {
     const createdAtDate: Date = new Date(created_at);
     return formatDistanceToNow(createdAtDate, { addSuffix: true });
   }
+  
+  const formateToRGB = (hex: string): { r: number; g: number; b: number } => {
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return {r, g, b}
+  }
+  
   const hexToRGBAHandler = (hex: string, alpha: number): string => {
-    const red = parseInt(hex.substring(0, 2), 16);
-    const green = parseInt(hex.substring(2, 4), 16);
-    const blue = parseInt(hex.substring(4, 6), 16);
-    const rgbaColor = 'rgba(' + red + ',' + green + ',' + blue + ',' + alpha + ')';
+    const {r, g, b} = formateToRGB(hex)
+    const rgbaColor = 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
     return rgbaColor;
 
   }
 
   const brightestColorHandler = (hex: string): string => {
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-
+    const {r, g, b} = formateToRGB(hex)
     const maxRGB = Math.max(r, g, b);
-
     const factor = 255 / maxRGB;
     const brightestColor = `rgb(${Math.round(r * factor)}, ${Math.round(g * factor)}, ${Math.round(b * factor)})`
     return brightestColor;

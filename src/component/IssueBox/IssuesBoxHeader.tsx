@@ -6,7 +6,7 @@ import { useState } from 'react';
 function IssuesBoxHeader() {
   const [openDropDownIndex, setOpenDropDownIndex] = useState<number | null>(null);
 
-  const toggleDropDown = (index: number | null) => {
+  const toggleDropDown = (index: number | null): void => {
     setOpenDropDownIndex(index === openDropDownIndex ? null : index);
   };
 
