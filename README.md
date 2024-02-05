@@ -61,6 +61,7 @@ We are exporting the data from GitHubProvider.tsx and using it in respected Comp
 ### API Rate Limit Handling
 Due to using unauthenticated API there is a rate limit set on our API.
 
+## Package.json
 ```json
 {
   "name": "github_issues",
