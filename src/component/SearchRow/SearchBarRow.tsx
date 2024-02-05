@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DropDownIcon from '../Helpers/DropDownIcon'
 import RightColumnButton from './RightColumnButton'
 import DropDownModel from '../Helpers/DropDownModel'
@@ -25,11 +25,14 @@ function SearchBarRow() {
     fetchIssues(1, search)
     setIsOpen(false)
   }
+  useEffect(() => {
+    console.log(isOpen, 'isOpen')
+  }, [isOpen])
   return (
     <div className='flex flex-col-reverse md:flex-row gap-3 items-center justify-between'>
       <div className='flex items-center w-full md:w-[50%] h-[30px]'>
         <div className='h-full relative'>
-          <button onClick={()=>toggleDropDown()} className='text-white hover:bg-gray-800 bg-[#21262D] h-full px-2 rounded-l-md flex text-sm items-center gap-1'>
+          <button onClick={toggleDropDown} className='text-white hover:bg-gray-800 bg-[#21262D] h-full px-2 rounded-l-md flex text-sm items-center gap-1'>
             Filters <DropDownIcon />
           </button>
           {isOpen && (
