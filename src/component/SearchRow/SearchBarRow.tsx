@@ -43,7 +43,7 @@ function SearchBarRow() {
                   <button className='w-full text-start h-full py-3 px-10' onClick={() => handleButtonClick(text)}>
                       <span className='flex items-center'>
                           {search === text && <SelectedIcon />}
-                          {search !== text && <div style={{ width: '24px' }}></div>} {/* Adjust the width as needed */}
+                          {search !== text && <div style={{ width: '24px' }}></div>} 
                           <span className={`inline-block ${search === text && 'pl-[15px]'} ${search !== text && 'pl-[7px]'} `}>{text}</span>
                       </span>
                   </button>
