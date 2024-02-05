@@ -33,21 +33,23 @@ export const GitHubProvider = ({ children }: GitHubProviderProps) => {
         setCurrentPage(1)
         setTotalPages(0)
       }
-      if (search.length > 0 || totalPages === 0) {
-        const response = await fetch(`${GITHUB_API_URL}/search/issues?q=${search}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        const responseData = await response.json();
-        const data: Issue[] = responseData.items;
-        setTotalPages(Math.ceil(data.length / perPage));
-      }
+      // if (search.length > 0 || totalPages === 0) {
+      //   const response = await fetch(`${GITHUB_API_URL}/search/issues?q=${search}`);
+      //   if (!response.ok) {
+      //     throw new Error('Failed to fetch data');
+      //   }
+      //   const responseData = await response.json();
+      //   const data: Issue[] = responseData.items;
+      //   setTotalPages(Math.ceil(data.length / perPage));
+      // }
       const response = await fetch(`${GITHUB_API_URL}/search/issues?q=${search}&page=${page}&per_page=${perPage}`);
       if (!response.ok) {
         throw new Error('Failed to fetch data');
       }
       const responseData = await response.json();
+      console.log(responseData)
       const data: Issue[] = responseData.items;
+      setTotalPages(Math.ceil(responseData.total_count / perPage));
       setError({
         status: false,
         message: null
