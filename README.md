@@ -17,21 +17,20 @@ To run the application locally, follow these steps:
     git clone https://github.com/AbdulHadi806/get-and-search-github-issues-using-github-api.git
     ```
 
-2. Navigate to the project directory:
-    ```bash
-    cd get-and-search-github-issues-using-github-api
-    ```
-
-3. Install dependencies with npm:
+2. Install dependencies with npm:
     ```bash
     npm install
     ```
 
-4. Start the application:
+3. Start the application:
     ```bash
     npm start
     ```
-
+4. Open Browser and search 
+    ```bash
+    http://localhost:3000
+    ```
+    
 ## UI
 ![GitHub Issues Viewer UI](https://github.com/AbdulHadi806/get-and-search-github-issues-using-github-api/assets/113926529/2e867888-ea44-405e-a3ae-f02877e3b713)
 
