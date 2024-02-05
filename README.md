@@ -4,9 +4,9 @@
 GitHub Issues Viewer is a web application that enables users to retrieve and search GitHub issues using the GitHub API. It is built with ReactJS, Tailwind CSS, and TypeScript.
 
 ## Technologies Used
-- ReactJS
-- Tailwind CSS
-- TypeScript
+- [ReactJS](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [GitHub API](https://api.github.com)
 
 ## How to Run the App
