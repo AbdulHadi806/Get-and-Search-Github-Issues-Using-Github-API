@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import { ErrorState, GitHubContextType, GitHubProviderProps, Issue } from '../interfaces/githubInterfaces';
 const GITHUB_API_URL = process.env.REACT_APP_GITHUB_API;
+const PERSONAL_ACCESS_TOKEN = process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN
 
 const GitHubContext = createContext<GitHubContextType | undefined>(undefined);
 
@@ -27,13 +28,18 @@ export const GitHubProvider = ({ children }: GitHubProviderProps) => {
   const perPage = 10;
   const fetchIssues = async (page: number, search: string) => {
     setLoading(true)
+    const headers = {
+      Authorization: `Bearer ${PERSONAL_ACCESS_TOKEN} `
+    }
     try {
       if (prevSearch !== search) {
         setCurrentPage(1)
         setTotalPages(0)
       }
       if (search.length > 0 || totalPages === 0) {
-        const response = await fetch(`${GITHUB_API_URL}/search/issues?q=${search}`);
+        const response = await fetch(`${GITHUB_API_URL}/search/issues?q=${search}`, {
+          headers: headers
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -41,7 +47,9 @@ export const GitHubProvider = ({ children }: GitHubProviderProps) => {
         const data: Issue[] = responseData.items;
         setTotalPages(Math.ceil(data.length / perPage));
       }
-      const response = await fetch(`${GITHUB_API_URL}/search/issues?q=${search}&page=${page}&per_page=${perPage}`);
+      const response = await fetch(`${GITHUB_API_URL}/search/issues?q=${search}&page=${page}&per_page=${perPage}`, {
+        headers: headers
+      });
       if (!response.ok) {
         throw new Error('Failed to fetch data');
       }
