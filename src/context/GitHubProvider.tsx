@@ -40,7 +40,13 @@ export const GitHubProvider = ({ children }: GitHubProviderProps) => {
       const responseData = await response.json();
       console.log(responseData)
       const data: Issue[] = responseData.items;
-      setTotalPages(Math.ceil(1000 / perPage));
+      console.log(responseData)
+      if(responseData.total_count < 1000) {
+        setTotalPages(Math.ceil(responseData.total_count / perPage));
+      }
+      else {
+        setTotalPages(Math.ceil(1000 / perPage));
+      }
       setError({
         status: false,
         message: null
