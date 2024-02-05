@@ -22,7 +22,7 @@ function IssuesHeaderRightList({ item, isOpen, onToggle }: ColumnBtnProps) {
         <DropDownModel title={`Filter by ${item}`} modelPostion={'right-[0%]'} onClose={onToggle}>
           <div className='pt-3'>
             <div className='px-4 h-[30px]'>
-              <input type="text" className='h-full w-full rounded-md border border-slate-700 bg-[#010409] text-sm px-4 text-white focus:outline-blue' placeholder='Filter' />
+              <input type="text" className='h-full w-full rounded-md border border-slate-700 outline-none focus:outline-none bg-[#010409] text-sm px-4 text-white focus:outline-blue' placeholder='Filter' />
             </div>
             <ul className='min-h-[120px] max-h-[250px] overflow-y-auto border-t mt-4 border-slate-700'>
               {uniqueUsers.map(userLogin => {
@@ -30,7 +30,7 @@ function IssuesHeaderRightList({ item, isOpen, onToggle }: ColumnBtnProps) {
                 if (!userIssue) return null;
                 const user = userIssue.user;
                 return (
-                  <li key={`${user.id}-${Math.random()}`} className='border-b px-4 flex items-center gap-2 justify-center hover:bg-gray-800 border-slate-700 py-2'>
+                  <li key={`${user.id}-${Math.random()}`} className='border-b pl-10 pe-4 flex items-center gap-2 justify-start hover:bg-gray-800 border-slate-700 py-2'>
                     <button className='flex min-w-[150px] gap-4 items-center'>
                       <div className='w-[30px]'>
                         <img className='object-contain rounded-full' src={user.avatar_url} alt={user.login} />

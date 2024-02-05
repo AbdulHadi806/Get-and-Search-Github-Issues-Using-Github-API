@@ -40,15 +40,15 @@ function SearchBarRow() {
           )}
         </div>
         <div className='h-full w-full'>
-          <input type="text" className='h-full w-full border-l-0 rounded-r-md border border-slate-700 bg-[#010409] text-sm px-4 text-white focus:outline-blue' placeholder='Issues' onKeyDown={handleKeyDown} onChange={(e) => { setSearch(e.target.value) }} value={search} />
+          <input type="text" className='h-full w-full border-l-0 rounded-r-md border border-slate-700 outline-none focus:outline-none bg-[#010409] text-sm px-4 text-white focus:outline-blue' placeholder='Issues' onKeyDown={handleKeyDown} onChange={(e) => { setSearch(e.target.value) }} value={search} />
         </div>
       </div>
-      <div className='flex justify-between md:gap-4 h-[30px] w-full md:max-w-[380px]'>
+      <div className='flex justify-between md:gap-3 h-[30px] w-full md:max-w-[380px]'>
         <div className='flex'>
           <RightColumnButton icon={<LabelIcon />} text={"Labels"} count={'32'} rounded="rounded-l-md" />
           <RightColumnButton icon={<MileStoneIcon />} text={"Milestones"} count={'4'} rounded="rounded-r-md" />
         </div>
-        <button className='text-white bg-blue-600 rounded-md text-sm px-2 hover:bg-blue-700'>New Issue</button>
+        <button className='text-white bg-blue-500 rounded-md text-sm px-2 hover:bg-blue-400'>New issue</button>
       </div>
     </div>
   )

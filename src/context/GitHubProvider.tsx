@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-import { GitHubContextType, GitHubProviderProps, Issue } from '../interfaces/githubInterfaces';
+import { ErrorState, GitHubContextType, GitHubProviderProps, Issue } from '../interfaces/githubInterfaces';
 const GITHUB_API_URL = process.env.REACT_APP_GITHUB_API;
 
 const GitHubContext = createContext<GitHubContextType | undefined>(undefined);
@@ -17,8 +17,12 @@ export const GitHubProvider = ({ children }: GitHubProviderProps) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [error, setError] = useState<ErrorState>({
+    status: false,
+    message: null
+  })
   const [prevSearch, setPrevSearch] = useState<string>('')
-  const [search, setSearch] = useState<string>("facebook/react+is:issue+is:open"); 
+  const [search, setSearch] = useState<string>("facebook/react+is:issue+is:open");
 
   const perPage = 10;
   const fetchIssues = async (page: number, search: string) => {
@@ -42,14 +46,21 @@ export const GitHubProvider = ({ children }: GitHubProviderProps) => {
         throw new Error('Failed to fetch data');
       }
       const responseData = await response.json();
-
       const data: Issue[] = responseData.items;
+      setError({
+        status: false,
+        message: null
+      })
       setIssues(data);
       setCurrentPage(page)
       setPrevSearch(search)
       setLoading(false);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.log('Error fetching data:', error);
+      setError({
+        status: true,
+        message: error instanceof Error ? error.message : 'Unknown Error'
+      })
       setLoading(false);
       setCurrentPage(1)
       setTotalPages(0)
@@ -57,7 +68,7 @@ export const GitHubProvider = ({ children }: GitHubProviderProps) => {
   };
 
   return (
-    <GitHubContext.Provider value={{ issues, loading, fetchIssues, totalPages, currentPage, search, setSearch }}>
+    <GitHubContext.Provider value={{ error, issues, loading, fetchIssues, totalPages, currentPage, search, setSearch }}>
       {children}
     </GitHubContext.Provider>
   );

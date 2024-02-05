@@ -12,6 +12,10 @@ interface IssueLabels {
   color: string
 }
   
+export interface ErrorState {
+  status: boolean;
+  message: string | null;
+}
 export interface Issue {
   id: number;
   user: User;
@@ -32,6 +36,7 @@ export interface GitHubContextType {
   search: string;
   setSearch: (search: string) => void;
   fetchIssues: (page: number, search: string) => void;
+  error: ErrorState;
 }
 
 export interface GitHubProviderProps {

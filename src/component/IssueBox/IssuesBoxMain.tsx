@@ -33,12 +33,12 @@ function IssuesBoxMain() {
           pageRangeDisplayed={10}
           marginPagesDisplayed={2}
           onPageChange={handlePageChange}
-          containerClassName="flex gap-2 text-white justify-center pagination"
-          activeClassName="bg-blue-700 rounded-md"
-          previousLinkClassName={`prev ${activePage === 0 ? 'opacity-50 cursor-not-allowed' : 'text-blue-700'}`}
-          nextLinkClassName={`next ${activePage === totalPages - 1  ? 'opacity-50 cursor-not-allowed' : 'text-blue-700'}`}
-          pageLinkClassName="page"
-          pageClassName="w-[30px] flex justify-center"
+          containerClassName="flex gap-4 h-[30px] text-md text-white justify-center items-center pagination"
+          activeClassName="bg-blue-600 hover:border-transparent rounded-md"
+          previousLinkClassName={`prev ${activePage === 0 ? 'opacity-50 cursor-not-allowed' : 'text-blue-500 flex px-3 justify-center border border-transparent transition hover:border-white rounded-md'}`}
+          nextLinkClassName={`next ${activePage === totalPages - 1  ? 'opacity-50 cursor-not-allowed' : 'text-blue-500 px-3 flex justify-center border border-transparent transition hover:border-white rounded-md'}`}
+          pageLinkClassName="page border border-transparent w-full flex justify-center items-center hover:border"
+          pageClassName="w-[30px] flex justify-center border border-transparent transition hover:border-white rounded-md"
           forcePage={activePage}
         />
       </div>
